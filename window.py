@@ -54,5 +54,7 @@ class Window:
         text = font.render(nemesis, 1, (0, 0, 0))
         self.gameDisplay.blit(text, (430, 30))
 
-    def createGameView(self,game):
-        print("createGameView")
+    def createCharacterView(self,game):
+        self.gameDisplay.fill((255, 255, 255))
+
+

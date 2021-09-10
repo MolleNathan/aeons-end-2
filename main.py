@@ -26,11 +26,11 @@ if __name__ == '__main__':
                 for btnN in window.listBtnNemesis:
                     if btnN.click(mouse):
                         game.setNemesisName(btnN.text)
-                        window.displayNemesis(game.setNemesisName)
+                        window.displayNemesis(game.nemesisName)
                 if window.btnStartGame.click(mouse):
-                    print("start")
-                    game.setupNemesis()
-                    window.createGameView(game)
+                    if game.nemesisName != "empty" and game.nbPlayers:
+                        game.setupNemesis()
+                        window.createCharacterView(game)
             #print(event)
         pygame.display.update()
         clock.tick(60)
