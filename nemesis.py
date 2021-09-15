@@ -7,6 +7,7 @@ class Nemesis:
         self.health = None
         self.nemesisDeck = []
         self.nemesisCards = [[],[],[]]
+        self.nemesisBoard = []
         self.nemesisCardPersonnalCards = {
             "Rage": {
                 1 : [],
@@ -28,8 +29,7 @@ class Nemesis:
 
     def setupNemesis(self,nbPlayers):
         self.health = self.switcher[self.nemesisName]
-        self.createNemesisDeck(nbPlayers)
-        self.additionnalSetup()
+        #self.createNemesisDeck(nbPlayers)
 
     def additionnalSetup(self):
         #If it's Rage Incarnne, create the "Frappe" deck and he starts with one nemesis Token
@@ -44,6 +44,11 @@ class Nemesis:
             random.shuffle(self.rageIncarneeFrappe)
             self.nemesisToken = 1
 
+
+    def drawNemesisCard(self):
+        nemesisCard = self.nemesisDeck[0]
+        self.nemesisDeck.remove(nemesisCard)
+        return nemesisCard
 
 
     def createNemesisDeck(self,nbPlayers):
@@ -104,6 +109,9 @@ class Nemesis:
         collisionDesPlans = NemesisCard("Pouvoir","Collision Des Plans","W212",2,"W212",None,1)
         detritus = NemesisCard("Attaque", "Détritus", "W213", None, None, None, 1)
         self.nemesisCards[0].extend([souffleDuLabyrinthe,champDAgonie,seigneurDuFleau,saignementStatique,oeilduNeant,cracheurDeBrouillard,embrocher,massacre,cielTisse,affliction,droneDesCatacombes,fileuseHurlante,empietement,coeurDuNeant,collisionDesPlans,nuitSansFin,annulation,detritus])
+
+        #TestNemesisCard
+        self.nemesisDeck = [souffleDuLabyrinthe]
 
         aggression = NemesisCard("Attaque", "Aggression", "066", None, None, None, 2)
         reveil = NemesisCard("Attaque", "Réveil", "212", None, None, None, 2)
